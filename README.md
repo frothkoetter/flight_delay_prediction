@@ -14,19 +14,21 @@ This project show step by step how to setup the Flight Delay Prediction Demo
 
 CML - provision AMPs Flight Cancellation
 
-Create a project
+Create a project from the Flight Cancellation AMP
+
 ![](images/image2.png)
+
 Run the deployment
+
 ![](images/image3.png)
+
 Test the model API
+
 ![](images/image4.png)
 
 ## Step CDW - Provision Iceberg Table
 
-
-Create a database
-
-Navigate to Data Warehouse, then Virtual Warehouse and open the HUE SQL Authoring tool.
+Navigate to Cloudera Data Warehouse, then Virtual Warehouse and open the HUE SQL Authoring tool.
 
 Create new database for your user to be used, or use one that is already created for you.
 
@@ -55,6 +57,17 @@ stored by
  ICEBERG;
 ```
 
+## Step Create a account on OpenWeather and grep the key
+
+Open in a browser OpenWeather
+https://openweathermap.org/
+
+Create a account and grep the Key
+![](images/image16.png)
+
+The free tier account is able for 60 API calls per minutes.
+
+
 ## Step CDF - Provision Flow
 
 ### Import Flow
@@ -71,19 +84,21 @@ Deplay the DataFlow
 ![](images/image14.png)
 Parameters
 ![](images/image15.png)
-###CDPEnvironment
+
+CDPEnvironment
+
 ```
 /home/nifi/additional/secret/env_config/hive-site.xml,/home/nifi/additional/secret/env_config/core-site.xml,/home/nifi/additional/secret/env_config/ssl-client.xml
 ```
 
-###aws_access_key_id
-###aws_secret_access_key
+aws_access_key_id
+aws_secret_access_key
 lookup in AWS IAM
 
-###bucket
-created / existing bucket in S3/AWS
+bucket
+existing bucket in S3/AWS
 
-Pickup from the above created CML ModelAPI
+Pick the cml_access_key  and cml_model_url from the above created CML ModelAPI
 
 ###cml_access_key
 "mzhv0lqktleqhp9ys8axlrfz60iaw6fv"
@@ -92,9 +107,6 @@ Example, key in quotes
 ###cml_model_url
 https://modelservice.ml-2de008cb-861.se-sandb.a465-9q4k.cloudera.site/model
 (example)
-
-Create a account on OpenWeather and grep the key
-![](images/image16.png)
 
 ###openweather_appid
 aksldfjaslkfj-e96c82df4cb3c76e89480db9329ca897
