@@ -8,7 +8,6 @@ This project show step by step how to setup the Flight Delay Prediction Demo
 
 ![](images/image1.png)
 
-## Installation
 
 ## Step  CML - Provision ModelAPI on Cloudera Machine Leraning
 
@@ -68,11 +67,11 @@ Create a account and grep the Key
 The free tier account is able for 60 API calls per minutes.
 
 
-## Step CDF - Provision Flow
+## Step CDF - Provision Nifi Flow
 
-### Import Flow
+Import Flow into the CDF catalog
 
-Upload nifi_flow_flight_prediction_with_ice.json
+Upload nifi_flow_flight_prediction_with_ice.json and import
 
 ![](images/image10.png)
 
@@ -82,7 +81,9 @@ Deplay the DataFlow
 ![](images/image12.png)
 ![](images/image13.png)
 ![](images/image14.png)
+
 Parameters
+
 ![](images/image15.png)
 
 CDPEnvironment
@@ -114,6 +115,8 @@ Note: create a account on OpenWeather
 
 
 ## Step CDV - Import Dashboard Visual
+Download the flight_prediction_dataviz.json file from the githup on your laptop and follow the following steps
+
 ![](images/image20.png)
 
 ![](images/image21.png)
@@ -121,3 +124,21 @@ Note: create a account on OpenWeather
 ![](images/image22.png)
 
 ![](images/image23.png)
+
+
+
+## Step start the flight events
+
+Navigate on your laptop go to faker_flights directory
+
+Pick the public CDF endpoint and port from the provision Nifi flow
+
+```shell
+./gen.sh cdf_endpoint_of_the_nifi_flow
+```
+
+Check in CDF that the first processor recives events
+
+![](images/image30.png)
+
+Navigate to DataViz and run the previously imported Dashboard
