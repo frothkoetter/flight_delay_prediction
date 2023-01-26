@@ -137,8 +137,21 @@ Pick the public CDF endpoint and port from the provision Nifi flow
 ./gen.sh cdf_endpoint_of_the_nifi_flow
 ```
 
-Check in CDF that the first processor recives events
+Navigate to CDF provisioned Flow and you should see like the following
+
+![](images/image24.png)
+
+Click into the Flow and open Nifi
+
+![](images/image25.png)
+
+Click on the first processor Inhale events that it recives events
 
 ![](images/image30.png)
 
+4-5 Events per minute
+
+
 Navigate to DataViz and run the previously imported Dashboard
+
+![](images/image1.png)
