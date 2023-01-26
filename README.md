@@ -68,9 +68,9 @@ Deplay the DataFlow
 ![](images/image11.png)
 ![](images/image12.png)
 ![](images/image13.png)
-
+![](images/image14.png)
 Parameters
-
+![](images/image15.png)
 ###CDPEnvironment
 ```
 /home/nifi/additional/secret/env_config/hive-site.xml,/home/nifi/additional/secret/env_config/core-site.xml,/home/nifi/additional/secret/env_config/ssl-client.xml
@@ -94,8 +94,18 @@ https://modelservice.ml-2de008cb-861.se-sandb.a465-9q4k.cloudera.site/model
 (example)
 
 Create a account on OpenWeather and grep the key
-![](images/image15.png)
+![](images/image16.png)
 
 ###openweather_appid
 aksldfjaslkfj-e96c82df4cb3c76e89480db9329ca897
 Note: create a account on OpenWeather
+
+
+## Step CDV - Import Dashboard Visual
+![](images/image20.png)
+
+![](images/image21.png)
+
+![](images/image22.png)
+
+![](images/image23.png)
