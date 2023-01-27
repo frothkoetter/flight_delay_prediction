@@ -54,6 +54,29 @@ temp float, pressure float, humidity integer, wind_speed float, clouds integer)
 partitioned by (year int)
 stored by
  ICEBERG;
+
+ drop view flights_prediction_ice_cve;
+ create view flights_prediction_ice_cve as
+ select
+   year, month, dayofmonth, dayofweek, deptime, crsdeptime, arrtime, crsarrtime, uniquecarrier, flightnum, tailnum,
+   actualelapsedtime, crselapsedtime, airtime, arrdelay, depdelay, origin, dest, cast( distance as integer ) as distance, taxiin, taxiout,
+   cancelled, cancellationcode, diverted, carrierdelay, weatherdelay, nasdelay, securitydelay, lateaircraftdelay,
+   origin_lon, origin_lat, cast( dest_lon as float) as dest_lon, cast(dest_lat as float) as dest_lat,
+   cast( translate( substr(prediction, instr(prediction,'prediction=')+11,1 ),'}','') as float) as prediction,
+   cast( translate( substr(prediction, instr(prediction,'proba=')+6,4 ),'}','') as float) as proba,
+   case translate( substr(prediction, instr(prediction,'prediction=')+11,1 ),'}','')
+     when 1 then trunc(rand() * 99 + 1) end as prediction_delay ,
+   cast( translate( substr( weather_json, instr(weather_json,'temp=')+5,5 ),',','') as float) as  temp,
+   cast( translate( substr( weather_json, instr(weather_json,'pressure=')+9,6 ),',','') as float) as  presssure,
+   cast( translate( substr( weather_json, instr(weather_json,'humidity=')+9,2 ),',','') as float) as  humidity,
+   cast( translate( substr( weather_json, instr(weather_json,'speed=')+6,5 ),',','') as float) as  wind_speed,
+   cast( translate( substr( weather_json, instr(weather_json,'all=')+4,3 ),'}','') as float) as clouds
+ from
+  airlinedata.flights_prediction_ice;
+
+
+ select * from flights_prediction_ice_cve;
+
 ```
 
 ## Step Create a account on OpenWeather and grep the key
@@ -126,7 +149,6 @@ Download the flight_prediction_dataviz.json file from the githup on your laptop 
 ![](images/image23.png)
 
 
-
 ## Step start the flight events
 
 Navigate on your laptop go to faker_flights directory
@@ -155,3 +177,13 @@ Click on the first processor Inhale events that it recives events
 Navigate to DataViz and run the previously imported Dashboard
 
 ![](images/image1.png)
+
+
+In Hue run the query
+
+```SQL
+select * from flights_prediction_ice_cve limit 100;
+```
+In the markup map asign lon/lat to see airport locations
+
+![](images/image50.png)
