@@ -41,17 +41,16 @@ Create the Iceberg table in the airlinedata Database
 ```sql
 drop table if exists flights_prediction_ice;
 create table flights_prediction_ice
-( month int, dayofmonth int,
- dayofweek int, deptime int, crsdeptime int, arrtime int,
- crsarrtime int, uniquecarrier string, flightnum int, tailnum string,
- actualelapsedtime int, crselapsedtime int, airtime int, arrdelay int,
- depdelay int, origin string, dest string, distance int, taxiin int,
- taxiout int, cancelled int, cancellationcode string, diverted string,
- carrierdelay int, weatherdelay int, nasdelay int, securitydelay int,
-lateaircraftdelay int, origin_lon float, origin_lat float, dest_lon float, dest_lat float,
-prediction float, proba float, prediction_delay int,
-temp float, pressure float, humidity integer, wind_speed float, clouds integer)
-partitioned by (year int)
+( year string,month string, dayofmonth string,
+ dayofweek string, deptime string,crsdeptime string, arrtime string,
+ crsarrtime string, uniquecarrier string, flightnum string, tailnum string,
+ actualelapsedtime string, crselapsedtime string, airtime string, arrdelay string,
+  depdelay string, origin string, dest string, distance string, taxiin string,
+ taxiout string, cancelled string,cancellationcode string, diverted string,
+ carrierdelay string, weatherdelay string, nasdelay string, securitydelay string,
+lateaircraftdelay string, origin_lon string,origin_lat string, dest_lon string,dest_lat string,
+prediction string, proba string, weather_json string
+ )
 stored by
  ICEBERG;
 
@@ -136,6 +135,11 @@ https://modelservice.ml-2de008cb-861.se-sandb.a465-9q4k.cloudera.site/model
 aksldfjaslkfj-e96c82df4cb3c76e89480db9329ca897
 Note: create a account on OpenWeather
 
+###cdp_workload_user
+CDP Workkoad User
+
+###cdp_workload_password
+CDP Password of Workload user
 
 ## Step CDV - Import Dashboard Visual
 Download the flight_prediction_dataviz.json file from the githup on your laptop and follow the following steps
